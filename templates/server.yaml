@@ -1,0 +1,5 @@
+---
+additionalProperties:
+    apiPackage: Api
+    invokerPackage: DestinyLog
+    artifactVersion: '0.1'

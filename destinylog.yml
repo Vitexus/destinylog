@@ -1,0 +1,52 @@
+---
+openapi: 3.1.2
+info:
+  title: Decision Tree API
+  version: 1.0.0
+paths:
+  /decision:
+    post:
+      summary: Save a decision
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Decision'
+      responses:
+        '201':
+          description: Decision saved
+        '400':
+          description: Invalid input
+    get:
+      summary: Report decisions
+      responses:
+        '200':
+          description: A list of decisions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decision'
+        '404':
+          description: Decisions not found
+components:
+  schemas:
+    Decision:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        route:
+          type: string
+          description: The route of the decision tree
+        decision:
+          type: string
+          enum: [left, right, die]
+          description: The decision made
+      required:
+        - id
+        - route
+        - decision
