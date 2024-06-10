@@ -1,0 +1,2 @@
+# destinylog
+Log your decisions
